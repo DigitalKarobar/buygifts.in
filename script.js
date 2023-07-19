@@ -97,7 +97,7 @@ fetch('data.json')
     }
 
     // Populate navigation menu
-    const categories = ['all', 'Books', 'Gadget', 'Computer'];
+    const categories = ['all', ...new Set(products.map(product => product.category))];
     categories.forEach(category => {
       const liElement = document.createElement('li');
       const aElement = document.createElement('a');
