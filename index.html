@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Amazon Product List</title>
+  <meta name="description" content="Explore and buy products from Amazon.">
+  <meta name="keywords" content="Amazon, products, buy, online shopping">
+  <meta name="author" content="Your Name">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      height: 40px;
+    }
+    .navbar ul li {
+      margin-right: 10px;
+    }
+    .navbar ul li:last-child {
+      margin-right: 0;
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px;
+      transition: background-color 0.3s;
+      border-radius: 5px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .navbar a:hover {
+      background-color: #555;
+    }
+    .search-form {
+      text-align: center;
+    }
+    .search-form input[type="text"] {
+      padding: 8px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      outline: none;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    .search-form button[type="submit"] {
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      outline: none;
+      height: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .search-form button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    #productList {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .product {
+      width: 300px;
+      padding: 20px;
+      margin: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      text-align: center;
+      background-color: #fff;
+    }
+    .product img {
+      width: 150px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    .product h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .product p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+    .product a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .product a:hover {
+      background-color: #0056b3;
+    }
+    .scroll-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s;
+    }
+    .scroll-to-top:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        align-items: center;
+      }
+      .navbar ul {
+        flex-direction: column;
+        height: auto;
+        margin-bottom: 10px;
+      }
+      .navbar ul li {
+        margin-right: 0;
+      }
+      .search-form {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <form class="search-form" onsubmit="searchProducts(event)">
+        <input type="text" id="searchInput" placeholder="Search products...">
+        <button type="submit">Search</button>
+      </form>
+      <ul>
+        <li><a href="#" onclick="filterProducts('all')">All</a></li>
+        <li><a href="#" onclick="filterProducts('tech')">Tech</a></li>
+        <li><a href="#" onclick="filterProducts('finance')">Finance</a></li>
+      </ul>
+    </nav>
+  </header>
+  <h1>Amazon Product List</h1>
+  <div id="productList">
+    <!-- Product items will be dynamically added here -->
+  </div>
+  <button class="scroll-to-top" onclick="scrollToTop()" id="scrollToTopButton" title="Scroll to Top">&#8593;</button>
+
+  <script>
+    // JavaScript code
+    const products = [
+      {
+        title: "Product 1",
+        description: "Description of Product 1",
+        image: "product1.jpg",
+        link: "https://www.amazon.com/product1-affiliate-link",
+        category: "tech"
+      },
+      {
+        title: "Product 2",
+        description: "Description of Product 2",
+        image: "product2.jpg",
+        link: "https://www.amazon.com/product2-affiliate-link",
+        category: "finance"
+      },
+      {
+        title: "Product 3",
+        description: "Description of Product 3",
+        image: "product3.jpg",
+        link: "https://www.amazon.com/product3-affiliate-link",
+        category: "tech"
+      }
+      // Add more product objects as needed
+    ];
+
+    // Function to generate product elements
+    function generateProductElement(product) {
+      const productDiv = document.createElement('div');
+      productDiv.className = 'product';
+
+      const imageElement = document.createElement('img');
+      imageElement.src = product.image;
+      imageElement.alt = product.title;
+
+      const titleElement = document.createElement('h3');
+      titleElement.textContent = product.title;
+
+      const descriptionElement = document.createElement('p');
+      descriptionElement.textContent = product.description;
+
+      const linkElement = document.createElement('a');
+      linkElement.href = product.link;
+      linkElement.textContent = 'Buy Now';
+
+      productDiv.appendChild(imageElement);
+      productDiv.appendChild(titleElement);
+      productDiv.appendChild(descriptionElement);
+      productDiv.appendChild(linkElement);
+
+      return productDiv;
+    }
+
+    // Function to filter products based on the selected category
+    function filterProducts(category) {
+      const productListDiv = document.getElementById('productList');
+      productListDiv.innerHTML = '';
+
+      if (category === 'all') {
+        products.forEach((product) => {
+          const productElement = generateProductElement(product);
+          productListDiv.appendChild(productElement);
+        });
+      } else {
+        const filteredProducts = products.filter(product => product.category === category);
+        filteredProducts.forEach((product) => {
+          const productElement = generateProductElement(product);
+          productListDiv.appendChild(productElement);
+        });
+      }
+    }
+
+    // Function to search for products
+    function searchProducts(event) {
+      event.preventDefault();
+      const searchInput = document.getElementById('searchInput');
+      const searchTerm = searchInput.value.toLowerCase().trim();
+
+      const filteredProducts = products.filter(product =>
+        product.title.toLowerCase().includes(searchTerm) ||
+        product.description.toLowerCase().includes(searchTerm)
+      );
+
+      filterProducts('all'); // Reset filters
+      displayFilteredProducts(filteredProducts);
+    }
+
+    // Function to display filtered products
+    function displayFilteredProducts(filteredProducts) {
+      const productListDiv = document.getElementById('productList');
+      productListDiv.innerHTML = '';
+
+      if (filteredProducts.length === 0) {
+        const noResultsElement = document.createElement('p');
+        noResultsElement.textContent = 'No matching products found.';
+        productListDiv.appendChild(noResultsElement);
+      } else {
+        filteredProducts.forEach((product) => {
+          const productElement = generateProductElement(product);
+          productListDiv.appendChild(productElement);
+        });
+      }
+    }
+
+    // Scroll-to-top button functionality
+    const scrollToTopButton = document.getElementById("scrollToTopButton");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollToTopButton.style.display = "block";
+      } else {
+        scrollToTopButton.style.display = "none";
+      }
+    };
+
+    function scrollToTop() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    // Initial product list display
+    filterProducts('all');
+  </script>
+</body>
+</html>
