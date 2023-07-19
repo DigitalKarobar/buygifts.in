@@ -1,0 +1,77 @@
+[
+    {   
+        "image": "https://m.media-amazon.com/images/I/61EXU8BuGZL._SX569_.jpg",
+        "link" : "https://amzn.to/3oWgYor",
+        "title": "Echo Dot (3rd Gen) - Smart speaker with Alexa (Black)",
+        "category": "Gadget",
+        "blogpost": ""
+    }
+    ,
+    {
+        "image": "https://m.media-amazon.com/images/I/71UlEDZPiCL._SY450_.jpg",
+        "link" : "https://amzn.to/3P76sW5",
+        "title": "Boldfit Shoe Bag for Travel & Storage",
+        "category": "Best Seller",
+        "blogpost": ""
+    }
+    ,
+    {
+        "image": "https://m.media-amazon.com/images/I/61m5Uu4OMJL._SX679_.jpg",
+        "link" : "https://amzn.to/3X2KQvV",
+        "title": "LAPSTER Spiral Charger Spiral Charger Cable Protectors",
+        "category": "Best Seller",
+        "blogpost": ""
+    }
+    ,
+    {   
+        "image": "https://m.media-amazon.com/images/I/41r6F2LRf8L._SX323_BO1,204,203,200_.jpg",
+        "link" : "https://amzn.to/43WAbFB",
+        "title": "The Psychology of Money",
+        "category": "Books",
+        "blogpost": ""
+    },
+    {   
+        "image": "https://m.media-amazon.com/images/I/41biyRHud9L._SX313_BO1,204,203,200_.jpg",
+        "link" : "https://amzn.to/45Yq9Ft",
+        "title": "Get Epic Shit Done",
+        "category": "Books",
+        "blogpost": ""
+    }
+    ,
+    {
+        "image": "https://m.media-amazon.com/images/I/41MC15v6UIL._SX332_BO1,204,203,200_.jpg",
+        "link" : "https://amzn.to/3CoHGcA",
+        "title": "The 5 AM Club",
+        "category": "Books",
+        "blogpost": ""
+    }
+    ,
+    {
+        "image": "https://m.media-amazon.com/images/I/51+zmcWK3cL._SX522_.jpg",
+        "link" : "https://amzn.to/3WXOiIt",
+        "title": "Logitech M240 Silent Bluetooth Mouse",
+        "category": "Computer",
+        "blogpost": ""
+    }
+    ,
+    {
+        "image": "https://m.media-amazon.com/images/I/614s75abpYL._SL1500_.jpg",
+        "link" : "https://amzn.to/3Njdbdg",
+        "title": "AGARO Rejoice Foot, Calf and Leg Massager with Heat and Vibration",
+        "category": "Health & Lifestyle",
+        "blogpost": ""
+    }
+    ,
+    {
+        "image": "https://m.media-amazon.com/images/I/81HDjbwyw9L._SL1500_.jpg",
+        "link" : "https://amzn.to/3NyaTIt",
+        "title": "beatXP ArcHeal Foot Massager for Pain Relief",
+        "category": "Health & Lifestyle",
+        "blogpost": ""
+    }
+    ,
+    {
+        "image":"https://m.media-amazon.com/images/I/71bPRAF81PL._SL1500_.jpg",
+        "link": "https://amzn.to/3CyHs2D"
+    }
+]
