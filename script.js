@@ -97,7 +97,8 @@ fetch('data.json')
     }
 
     // Populate navigation menu
-    const categories = ['all', ...new Set(products.map(product => product.category))];
+    // const categories = ['all', ...new Set(products.map(product => product.category))];
+    const categories = ['all', 'Books', 'Gadget', 'Best Seller', 'Computer', 'Health & Lifestyle'];
     categories.forEach(category => {
       const liElement = document.createElement('li');
       const aElement = document.createElement('a');
@@ -108,6 +109,10 @@ fetch('data.json')
       navMenu.appendChild(liElement);
     });
 
-    // Initial product list display
+    // Load all categories' products by default
     filterProducts('all');
+
+    // Event listener for search form submission
+    const searchForm = document.querySelector('.search-form');
+    searchForm.addEventListener('submit', searchProducts);
   });
